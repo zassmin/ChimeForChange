@@ -6,4 +6,8 @@ ChimeForChange::Application.routes.draw do
 
   root :to => 'messages#index'
 
+  resources :messages
+
+  get 'tags/:tag', to: 'messages#show', as: :tag
+
 end
