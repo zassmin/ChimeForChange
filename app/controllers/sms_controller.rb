@@ -1,32 +1,30 @@
 class SmsController < ApplicationController
 
   def receive
-    message_body = params['Body']
-    from_number = params['From']
+    message = Message.new(country: params['FromCountry'],
+                          source: 'sms', # todo standardize source?
+                          description: params['Body'])
+    tag_list = message.description.scan(/#[a-zA-Z0-9]+/).join(', ')
+    message.tag_list = tag_list
 
-    message = Message.new
-    message.country = params['FromCountry']
-    message.source = 'sms' # todo standardize this somehow
-    message.description = params['Body']
-    message.tag_list = message.description.scan(/#[a-zA-Z0-9]+/).join(', ')
-    message.save! unless message.tag_list.empty?
-
-    puts message.to_s
-    if message.tag_list.empty?
-      render xml: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-<Response>
-    <Message>Uh oh, no tags!  Nothing saved!</Message>
-</Response>"
+    if message.save
+      render xml: response_message("Saved, with the tags #{tag_list}")
     else
-    render xml: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-<Response>
-    <Message>Saved, with the tags #{message.tag_list}</Message>
-</Response>"
+      render xml: response_message('Uh oh, no tags!  Nothing saved!')
     end
+  end
+
+  private
+  def response_message(msg)
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<Response>
+    <Message>#{msg}</Message>
+</Response>"
   end
 
 end
 
+# sample params
 #{"AccountSid"=>"AC8f02701ed57893c9785aa56183fcfb0c",
 # "MessageSid"=>"SMafb0de1778bf9992430f925c6927fd17",
 # "Body"=>"One more",
