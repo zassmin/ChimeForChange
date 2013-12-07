@@ -1,5 +1,5 @@
 <% tag_cloud Message.tag_counts.order(:count).reverse_order, %w(css1 css2 css3 css4) do |tag, css| %>
     <ul>
-      <li><%= link_to tag.name, tag_path(tag.name) %> (<%= tag.count %>) - <%= css %></li>
+      <li class='click_tag'><%= link_to tag.name, tag_path(tag.name), remote: true  %> (<%= tag.count %>) - <%= css %></li>
     </ul>
 <% end %>

@@ -1,2 +1,8 @@
-<%= message.description %>
-<%= message.source %>
+<ul class="current_tweets">
+  <% @messages.each do |message| %>
+    <li>
+      <%= message.description %>
+      <%= message.source %>
+    </li>
+  <% end %>
+</ul>
