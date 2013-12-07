@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem 'twitter'
+gem 'twitter', '~> 5.0'
 
 group :development, :test do
         gem 'sqlite3'
