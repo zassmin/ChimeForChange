@@ -145,10 +145,6 @@ DEPENDENCIES
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   sqlite3
-<<<<<<< HEAD
   twitter (~> 5.0)
-=======
   twilio-ruby
-  twitter
->>>>>>> 317c6e4bb0b1b70b0bd2c2d46424a6abbf82de14
   uglifier (>= 1.0.3)
