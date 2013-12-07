@@ -22,7 +22,7 @@ module ApplicationHelper
   def create_messages
     fetch_tweets.each do |tweet|
       next if Message.find_by_description(tweet[0])
-      message = Message.new(source: 'web',
+      message = Message.new(source: 'twitter',
                             # country: sometime... todo
                             description: tweet[0])
       message.populate_tags unless message.populate_tags.blank?
@@ -32,6 +32,8 @@ module ApplicationHelper
   end
 
   # get the saved messages to display
+
+  # organize the show by only displaying messages per hash tag
 
   def hash_tags_list
     ["chime4justice", "chimeforjustice", "chime4change", "chimeforchange", "Chime4Ed", "pakistan", "ChimeforEd"]
