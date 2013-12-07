@@ -10,24 +10,26 @@ module ApplicationHelper
   end
   
   def fetch_tweets
-    # makes this case sensitive, if I need t
-    # hash_tag = hash_tag.match(/^#(.*)/)[1]
-    # figure out country hash tag things
     tweets = []
     hash_tags_list.each do |hash_tag|
-      tweets << client.search(hash_tag)
+      client.search(hash_tag).attrs[:statuses].map{ 
+        |t| tweets << [t[:text], t[:location]] 
+      }
     end
     @tweet_feed = tweets
-    # only grab the most recent
-    # figure out with attrs to grab
+    # find out which attrs to grab and pull to get the save message updates
   end
 
+  # next save the messages
+ 
   # def create_message
   #   location?
   #   source: 'twitter'
   #   description
   # 
   # end
+
+  # get the saved messages to display
 
   def hash_tags_list
     ["chime4justice", "chimeforjustice", "chime4change", "chimeforchange", "Chime4Ed", "pakistan", "ChimeforEd"]
