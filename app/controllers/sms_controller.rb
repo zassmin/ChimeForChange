@@ -2,12 +2,10 @@ class SmsController < ApplicationController
 
   def receive
     message = Message.new(country: params['FromCountry'],
-                          source: 'sms', # todo standardize source?
+                          source: 'sms',                # todo standardize source?
                           description: params['Body'])
-    tag_list = message.description.scan(/#[a-zA-Z0-9]+/).join(', ')
-    message.tag_list = tag_list
-
-    if message.save
+    tag_list = message.populate_tags
+    if message.save!
       render xml: response_message("Saved, with the tags #{tag_list}")
     else
       render xml: response_message('Uh oh, no tags!  Nothing saved!')
