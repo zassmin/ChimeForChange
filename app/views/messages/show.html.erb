@@ -1,1 +1,4 @@
-Messages!  There are <%= @messages.count %> with the tag <%= params[:tag] %>
+<% @messages.each do |message| %>
+  <%= message.description %>
+  <%= message.source %>
+<% end %>

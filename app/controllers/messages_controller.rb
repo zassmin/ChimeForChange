@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  include ApplicationHelper
+
   def index
     @message = Message.new
     @messages = Message.all
@@ -15,6 +17,8 @@ class MessagesController < ApplicationController
 
   def show
     @messages = Message.tagged_with(params[:tag])
+    puts @messages
+    # @client = client
+    # @tweets = create_messages
   end
-
 end
