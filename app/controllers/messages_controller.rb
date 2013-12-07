@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @messages = Message.all
+    @tweets = create_messages
   end
 
   def create
@@ -19,6 +20,5 @@ class MessagesController < ApplicationController
     @messages = Message.tagged_with(params[:tag])
     puts @messages
     # @client = client
-    # @tweets = create_messages
   end
 end
