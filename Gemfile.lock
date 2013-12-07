@@ -116,9 +116,5 @@ DEPENDENCIES
   pg
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
-<<<<<<< HEAD
-  twitter
-=======
   sqlite3
->>>>>>> master
   uglifier (>= 1.0.3)
