@@ -17,17 +17,19 @@ module ApplicationHelper
       }
     end
     @tweet_feed = tweets
-    # find out which attrs to grab and pull to get the save message updates
   end
 
-  # next save the messages
- 
-  # def create_message
-  #   location?
-  #   source: 'twitter'
-  #   description
-  # 
-  # end
+  def create_messages
+    fetch_tweets.each do |tweet|
+      next if Message.find_by_description(tweet[0])
+      message = Message.new(source: 'web',
+                            # country: sometime... todo
+                            description: tweet[0])
+      message.populate_tags unless message.populate_tags.blank?
+      message.tag_list = "#chimeforchange"
+      message.save!
+    end
+  end
 
   # get the saved messages to display
 

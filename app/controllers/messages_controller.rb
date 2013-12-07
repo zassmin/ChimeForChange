@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
 
   def index
     @message = Message.new
+    # create_messages
   end
 
   def create
@@ -16,7 +17,7 @@ class MessagesController < ApplicationController
 
   def show
     @messages = Message.tagged_with(params[:tag])
-    @client = client
-    @tweets = fetch_tweets
+    # @client = client
+    # @tweets = create_messages
   end
 end
