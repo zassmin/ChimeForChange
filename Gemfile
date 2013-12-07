@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
+gem 'figaro'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem 'twitter'
+gem 'twitter', '~> 5.0.0'
 
 group :development, :test do
         gem 'sqlite3'
