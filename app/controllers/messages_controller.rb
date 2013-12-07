@@ -12,4 +12,8 @@ class MessagesController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @messages = Message.tagged_with(params[:tag])
+  end
+
 end
