@@ -1,0 +1,7 @@
+<% @messages.each do |message| %>
+  <ul>
+    <li>
+      <div class="description-list-item"><span class="title"><%= message.description %></span> | <span id="source"><%=message.source %></a> </span></div>
+    </li>
+  </ul>
+  <% end %>
