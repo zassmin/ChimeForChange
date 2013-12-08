@@ -1,11 +1,10 @@
 class SmsController < ApplicationController
 
   def receive
-    reply_message = response_body('')
     body = params['Body']
     if body.include? 'SEND'
       tag = body.scan(/#[a-zA-Z0-9]+/).first
-      reply_message response_body(Message.tagged_with(tag).by_send_date.limit(5).join("\n"))
+      reply_message = response_body(Message.tagged_with(tag).by_send_date.limit(5).join("\n"))
     else
 
       message = Message.new(country: params['FromCountry'],
