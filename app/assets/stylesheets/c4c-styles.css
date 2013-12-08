@@ -1,4 +1,67 @@
+body {
+	font-size: 16px;
+	line-height: 36px;
+	color: #A7ABAC;
+}
+
+
+a:link {color:#e94884;}      /* unvisited link pink*/ 
+a:visited {color:#ed687f;}  /* visited link rose*/
+a:hover {color:#f9b44c;}  /* mouse over link mustard */
+a:active {color:#f9b44c;}  /* selected link */
+
+/* #e4e5e4 super light gray  */  
+
 .logo {
 	margin-bottom: 10px;
 }
 
+ul { margin-top: 2%; margin-left: -30px; }
+
+li { 
+	list-style-type: none; 
+	font-size: 115%;
+	/*background-color: #e4e5e4;*/
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ed687f;
+
+  a {
+  	color: white;
+  }
+}
+
+.call-to-action {
+	text-align: center;
+	width: 90%;
+	margin: 5px auto;
+	color:  #ed687f;
+}
+
+.bell {
+	max-height: 50px;
+	max-width: 50px;
+	margin-right: 2%;
+}
+
+.fa-chevron-down {
+	margin-top: 6px;
+}
+
+.message {
+	color: #919596;
+	line-height: 110%;
+	padding-top: 2%;
+}
+
+.source {
+	text-transform: uppercase;
+	font-size: 70%;
+}
+
+.css4 {
+	background-color: #f8dcae;
+
+	a {
+		color: #000;
+	}
+}

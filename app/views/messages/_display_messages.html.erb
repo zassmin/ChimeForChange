@@ -1,8 +1,5 @@
-<ul class='tweets'>
+<ul>
   <% @messages.each do |message| %>
-    <li>
-      <%= message.description %>
-      <%= message.source %>
-    </li>
+	  <li><%= message.description %> | <%= message.source %></li>
   <% end %>
 </ul>

@@ -9,4 +9,5 @@ class Message < ActiveRecord::Base
   def populate_tags
     self.tag_list = self.description.scan(/#[a-zA-Z0-9]+/).join(', ')
   end
+
 end

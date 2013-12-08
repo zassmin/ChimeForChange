@@ -11,5 +11,4 @@
  *= require_self
  *= require_tree .
  */
-	// *** variables and mixin
-	@import "mixins";
+	@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");

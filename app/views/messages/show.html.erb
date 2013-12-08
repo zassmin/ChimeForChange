@@ -1,4 +1,7 @@
+<ul>
 <% @messages.each do |message| %>
-  <%= message.description %>
-  <%= message.source %>
+ <li class="message"> <%= message.description %> | 
+  <span class="source"><%= message.source %></span> </li>
 <% end %>
+
+</ul>
