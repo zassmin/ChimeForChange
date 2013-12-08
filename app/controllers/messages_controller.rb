@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   include ApplicationHelper
 
   def index
+    @tweets = create_messages
     @message = Message.new
     @messages = Message.all
   end
