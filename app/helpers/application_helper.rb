@@ -31,10 +31,6 @@ module ApplicationHelper
     end
   end
 
-  # get the saved messages to display
-
-  # organize the show by only displaying messages per hash tag
-
   def hash_tags_list
     ["chime4justice", "chimeforjustice", "chime4change", "chimeforchange", "Chime4Ed", "pakistan", "ChimeforEd"]
   end
