@@ -4,24 +4,25 @@ class SmsController < ApplicationController
     body = params['Body']
     if body.include? 'SEND'
       tag = body.scan(/#[a-zA-Z0-9]+/).first
-      reply_message = response_body(Message.tagged_with(tag).by_send_date.limit(5).map{|m| m.description}.join("\n"))
+      msgs_ord = Message.tagged_with(tag).by_send_date
+      msg = msgs_ord.limit(5).map{|m| m.description}.join("\n----\n")
+      reply_message = txt_response_body(msg)
     else
-
       message = Message.new(country: params['FromCountry'],
                             source: 'sms',                # todo standardize source?
                             description: body)
       tag_list = message.populate_tags
       if message.save
-        reply_message = response_body("Saved, with tags #{tag_list}!\nReply with SEND and a tag to see 5 new messages.")
+        reply_message = txt_response_body("Saved, with tags #{tag_list}!\nReply with SEND and a tag to see 5 new messages.")
       else
-        reply_message = response_body('Please include at least one tag in your message, like #chime4change')
+        reply_message = txt_response_body('Please include at least one tag in your message, like #chime4change')
       end
     end
     render xml: reply_message
   end
 
   private
-  def response_body(msg)
+  def txt_response_body(msg)
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <Response>
     <Message>#{msg}</Message>
