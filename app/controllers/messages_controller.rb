@@ -4,7 +4,6 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @messages = Message.all
-    @tweets = create_messages
   end
 
   def create
@@ -17,6 +16,7 @@ class MessagesController < ApplicationController
   end
 
   def show
+    @tweets = create_messages
     @messages = Message.tagged_with(params[:tag])
     render json: {
       html: render_to_string(partial: 'display_messages', locals: { messages: @messages })
