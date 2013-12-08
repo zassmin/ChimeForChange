@@ -1,3 +1,5 @@
 <ul>
-	<li><%= message.description %> | <%= message.source %></li>
+  <% @messages.each do |message| %>
+	  <li><%= message.description %> | <%= message.source %></li>
+  <% end %>
 </ul>

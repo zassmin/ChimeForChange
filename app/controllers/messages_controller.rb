@@ -18,7 +18,8 @@ class MessagesController < ApplicationController
 
   def show
     @messages = Message.tagged_with(params[:tag])
-    puts @messages
-    # @client = client
+    render json: {
+      html: render_to_string(partial: 'display_messages', locals: { messages: @messages })
+    }
   end
 end

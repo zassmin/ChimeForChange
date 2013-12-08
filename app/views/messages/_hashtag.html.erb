@@ -1,7 +1,7 @@
 <% tag_cloud Message.tag_counts.order(:count).reverse_order, %w(css1 css2 css3 css4) do |tag, css| %>
     <ul>
       <li><%= image_tag("bell.png", :class => "img-responsive bell pull-left") %>
-      	<%= link_to tag.name, tag_path(tag.name) %> (<%= tag.count %>) <% css %> <a href="#"><i class="fa fa-chevron-down pull-right"></i></a>
+      	<%= link_to tag.name, tag_path(tag.name), remote: true %> (<%= tag.count %>) <% css %> <a href="#"><i class="fa fa-chevron-down pull-right"></i></a>
       </li>
     </ul>
 <% end %>
